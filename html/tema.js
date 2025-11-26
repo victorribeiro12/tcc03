@@ -56,3 +56,21 @@
             });
         });
     });
+
+    /* Salve este arquivo como tema.js e importe em TODAS as páginas antes do </body> */
+
+(function() {
+    // 1. Aplicar Modo Escuro/Claro
+    const savedMode = localStorage.getItem('temaBase');
+    if (savedMode === 'claro') {
+        document.body.classList.add('tema-claro');
+    } else {
+        document.body.classList.remove('tema-claro');
+    }
+
+    // 2. Aplicar Cor de Destaque
+    const savedColor = localStorage.getItem('corTema');
+    if (savedColor) {
+        document.documentElement.style.setProperty('--accent-color', savedColor);
+    }
+})();

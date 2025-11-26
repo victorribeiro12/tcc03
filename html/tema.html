@@ -1,119 +1,200 @@
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Escolher Tema com Preview</title>
-    <link rel="stylesheet" href="../css/style5.css">
+    <title>Escolher Tema - Autocademy</title>
+    <link rel="stylesheet" href="../css/style4.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
-       
+        .center-screen {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 80vh; /* Centraliza verticalmente na área útil */
+        }
+        
+        .theme-selector-container {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 30px;
+            width: 100%;
+            max-width: 500px; /* Largura contida para elegância */
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+        }
+
+        .color-swatches {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin: 20px 0;
+            justify-content: center;
+        }
+
+        .swatch {
+            width: 32px; height: 32px;
+            border-radius: 50%;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .swatch:hover { transform: scale(1.15); }
+        .swatch.active { 
+            border-color: white; 
+            box-shadow: 0 0 0 2px var(--accent-color); 
+            transform: scale(1.1);
+        }
+
+        .browser-preview {
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            margin-top: 20px;
+        }
+        .preview-header {
+            height: 30px;
+            background-color: var(--accent-color); /* Muda com o tema */
+            display: flex; align-items: flex-end; padding-left: 10px;
+            transition: background-color 0.3s;
+        }
+        .preview-tab {
+            width: 80px; height: 18px;
+            background-color: rgba(255,255,255,0.3);
+            border-radius: 4px 4px 0 0;
+        }
+        .preview-content img { display: block; width: 100%; height: auto; }
+        
+        /* Botão Voltar */
+        .btn-back {
+            display: inline-flex; align-items: center; gap: 8px;
+            color: var(--text-secondary); text-decoration: none;
+            margin-bottom: 20px; font-weight: 500;
+        }
+        .btn-back:hover { color: var(--text-primary); }
     </style>
 </head>
+
 <body>
-    <header>
-        <div class="topbar-left">
-        <div class="logo">
-            <img src="../imagens/logo.png" alt="Logo Autocademy" width="50px" height="50px">
-            <span>Autocademy</span>
+
+    <aside class="sidebar">
+        <div class="logo-area">
+            <img src="../imagens/logo.png" alt="Logo">
+            <span class="logo-text">Autocademy</span>
         </div>
-        
-        <a href="../html/dashboard.html" class="active">
-            <img src="../imagens/iconhome.png" alt="Ícone Início" height="40" width="40">
-            <span>Início</span>
-        </a>
-        
-        <a href="#"> <img src="../imagens/icons8-livros-96.png" alt="Ícone Materias" height="40" width="40">
-            <span>Materias</span>
-        </a>
-        
-        <a href="#"> <img src="../imagens/iconhistorico.png" alt="Ícone Histórico" height="40" width="40">
-            <span>Historico</span>
+
+        <a href="../html/dashboard.php" class="nav-link">
+            <img src="../imagens/iconhome.png" alt="Início">
+            <span class="nav-text">Início</span>
         </a>
 
-  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-
-        <a href="config.html"> <img src="../imagens/icons8-configurações-150.png" alt="Ícone Configurações" height="40" width="40">
-            <span>Configurações</span>
+        <a href="../html/materias.html" class="nav-link">
+            <img src="../imagens/icons8-livros-96.png" alt="Matérias">
+            <span class="nav-text">Matérias</span>
         </a>
-    </div>
-    </header>
 
-    <div class="theme-selector-container">
-        <h3>Tema de cores</h3>
-        
-        <div class="color-swatches">
-            <span class="swatch active" data-color="#3b3b3b" style="background-color: #3b3b3b;" title="Sistema (Padrão)"></span>
-            <span class="swatch" data-color="#f0f0f0" style="background-color: #f0f0f0;" title="Claro"></span>
-            <span class="swatch" data-color="#55cffa" style="background-color: #55cffa;" title="Azul Céu"></span>
-            <span class="swatch" data-color="#8AF2D1" style="background-color: #8AF2D1;" title="Verde Água"></span>
-            <span class="swatch" data-color="#F4C0E0" style="background-color: #F4C0E0;" title="Rosa Claro"></span>
-            <span class="swatch" data-color="#E3008C" style="background-color: #E3008C;" title="Magenta"></span>
-            <span class="swatch" data-color="#FFB900" style="background-color: #FFB900;" title="Amarelo"></span>
-            <span class="swatch" data-color="#0078D4" style="background-color: #0078D4;" title="Azul Edge"></span>
-            <span class="swatch" data-color="#8E41B5" style="background-color: #8E41B5;" title="Roxo"></span>
-            <span class="swatch" data-color="#D13438" style="background-color: #D13438;" title="Vermelho"></span>
-            <span class="swatch" data-color="#107C10" style="background-color: #107C10;" title="Verde"></span>
-        </div>
-<div class="browser-preview">
-            <div class="preview-header" id="previewHeader">
-                <div class="preview-tab"></div>
+        <a href="#" class="nav-link">
+            <img src="../imagens/iconhistorico.png" alt="Histórico">
+            <span class="nav-text">Histórico</span>
+        </a>
+
+        <div class="spacer"></div>
+
+        <a href="../html/config.html" class="nav-link active">
+            <img src="../imagens/icons8-configurações-150.png" alt="Config">
+            <span class="nav-text">Configurações</span>
+        </a>
+    </aside>
+
+    <main class="main-wrapper">
+
+        <header class="top-header">
+            <div class="search-box">
+                <input type="text" placeholder="Buscar..." class="search-input">
+                <i class="fa-solid fa-magnifying-glass search-icon"></i>
             </div>
-            <div class="preview-content">
-                <img src="https://images.unsplash.com/photo-1451187580459-43490279c0a2?auto=format&fit=crop&w=800&q=80" alt="Pré-visualização do tema com imagem do espaço">
+            <div class="user-profile">
+                <span>Aluno Senai</span>
+                <div class="avatar-circle">
+                    <i class="fa-solid fa-user"></i>
+                </div>
+            </div>
+        </header>
+
+        <div class="scroll-content">
+            <div class="container center-screen">
+                
+                <div style="width: 100%; max-width: 500px;">
+                    <a href="config.html" class="btn-back">
+                        <i class="fa-solid fa-arrow-left"></i> Voltar para Configurações
+                    </a>
+                </div>
+
+                <div class="theme-selector-container">
+                    <h3 style="text-align: center; margin-bottom: 20px; color: var(--text-primary);">Personalize sua Experiência</h3>
+                    <p style="text-align: center; color: var(--text-secondary); font-size: 0.9rem;">Escolha uma cor de destaque para o sistema.</p>
+                    
+                    <div class="color-swatches">
+                        <span class="swatch active" data-color="#D13438" style="background-color: #D13438;" title="Vermelho Padrão"></span>
+                        <span class="swatch" data-color="#FFB900" style="background-color: #FFB900;" title="Laranja"></span>
+                        <span class="swatch" data-color="#0078D4" style="background-color: #0078D4;" title="Azul"></span>
+                        <span class="swatch" data-color="#107C10" style="background-color: #107C10;" title="Verde"></span>
+                        <span class="swatch" data-color="#8E41B5" style="background-color: #8E41B5;" title="Roxo"></span>
+                        <span class="swatch" data-color="#E3008C" style="background-color: #E3008C;" title="Magenta"></span>
+                    </div>
+
+                    <div class="browser-preview">
+                        <div class="preview-header" id="previewHeader">
+                            <div class="preview-tab"></div>
+                        </div>
+                        <div class="preview-content">
+                            <div style="height: 150px; background: var(--bg-body); display: flex; align-items: center; justify-content: center; color: var(--text-secondary);">
+                                Visualização do Sistema
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
-    </div>
+    </main>
 
- <script>
- document.addEventListener('DOMContentLoaded', () => {
-    const swatches = document.querySelectorAll('.swatch');
-    const previewHeader = document.getElementById('previewHeader');
-    
-    // Função para carregar o tema salvo na página de config
-    function carregarTemaConfig() {
-      // Pega o tema salvo ou usa o padrão
-      const temaSalvo = localStorage.getItem('temaPainel') || '#3b3b3b';
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const swatches = document.querySelectorAll('.swatch');
+            const previewHeader = document.getElementById('previewHeader');
+            
+            // Carregar tema salvo
+            const corSalva = localStorage.getItem('corTema') || '#D13438';
+            document.documentElement.style.setProperty('--accent-color', corSalva);
+            if(previewHeader) previewHeader.style.backgroundColor = corSalva;
 
-      // 1. Atualiza o preview
-      if (previewHeader) {
-        previewHeader.style.backgroundColor = temaSalvo;
-      }
-      
-      // 2. Marca o swatch (amostra) correto como 'active'
-      swatches.forEach(s => {
-        s.classList.remove('active');
-        if (s.dataset.color === temaSalvo) {
-          s.classList.add('active');
-        }
-      });
-    }
+            // Atualizar UI dos swatches
+            swatches.forEach(s => {
+                s.classList.remove('active');
+                if (s.dataset.color === corSalva) s.classList.add('active');
+            });
 
-    // Roda a função assim que a página carregar
-    carregarTemaConfig();
-
-    // Adiciona o evento de clique para cada amostra de cor
-    swatches.forEach(swatch => {
-      swatch.addEventListener('click', () => {
-        const newColor = swatch.dataset.color;
-
-        // 1. Atualiza o preview imediatamente
-        previewHeader.style.backgroundColor = newColor;
-        
-        // 2. ATUALIZA A VARIÁVEL CSS GLOBAL (Isso muda o header real)
-        document.documentElement.style.setProperty('--cor-tema-header', newColor);
-
-        // 3. Salva a escolha no localStorage
-        localStorage.setItem('temaPainel', newColor);
-
-        // 4. Atualiza qual swatch está 'active'
-        swatches.forEach(s => s.classList.remove('active'));
-        swatch.classList.add('active');
-      });
-    });
-  });
-</script>
-<script src="tema.js"></script>
-</body>
+            // Clique na cor
+            swatches.forEach(swatch => {
+                swatch.addEventListener('click', () => {
+                    const novaCor = swatch.dataset.color;
+                    
+                    // 1. Atualiza visual imediato
+                    document.documentElement.style.setProperty('--accent-color', novaCor);
+                    if(previewHeader) previewHeader.style.backgroundColor = novaCor;
+                    
+                    // 2. Salva
+                    localStorage.setItem('corTema', novaCor);
+                    
+                    // 3. Atualiza seleção
+                    swatches.forEach(s => s.classList.remove('active'));
+                    swatch.classList.add('active');
+                });
+            });
+        });
+    </script>
+    </body>
 </html>
